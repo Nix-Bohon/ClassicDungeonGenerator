@@ -18,7 +18,7 @@ namespace DungeonGeneratorDesktop
 
         public DungeonLevelViewModel()
         {
-            Model = DungeonBuilder.GenerateLevel();
+            Model = new DungeonLevel(); // default value.
         }
 
         private int _zoomFactor = 10;
