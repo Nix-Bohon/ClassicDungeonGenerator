@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 
 using ClassicDungeonGenerator.Models;
+using ClassicDungeonGenerator.Factories;
 
 namespace ClassicDungeonGenerator
 {
@@ -13,16 +14,12 @@ namespace ClassicDungeonGenerator
     {
         static void Main(string[] args)
         {
-            DungeonLevel l;
-            //l = DungeonBuilder.GenerateLevel(new Doorway());
-            //l = DungeonBuilder.GenerateLevel();
-            //Doorway d = new Doorway(0,0,0,1);
-            //d.SideIn = Side.North;
-            //DungeonBuilder.AddRoom(l, d);
-            //System.IO.StringWriter sw = new System.IO.StringWriter();
-            //System.Xml.Serialization.XmlSerializer i = new System.Xml.Serialization.XmlSerializer(typeof(DungeonLevel));
-            //i.Serialize(sw, l);
-            //sw.ToString();
+            DungeonLevelCreator c = new DungeonLevelCreator();
+            DungeonLevel l = c.GenerateLevel();
+            System.IO.StringWriter sw = new System.IO.StringWriter();
+            System.Xml.Serialization.XmlSerializer i = new System.Xml.Serialization.XmlSerializer(typeof(DungeonLevel));
+            i.Serialize(sw, l);
+            sw.ToString();
         }
     }
 }
